@@ -19,6 +19,5 @@ export default {
 </script>
 
 <style lang="sass">
-*
-  // font-family: Roboto Condensed
+
 </style>

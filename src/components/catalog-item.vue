@@ -14,7 +14,7 @@
             <p>{{ product_data.about }}</p>
 
             <div class="catalog-item__button-wrapper">
-                <button @click="sendArticToCatalog">Buy</button>
+                <button @click="addToCart">Buy</button>
             </div>
 
         </div>
@@ -42,8 +42,8 @@ export default {
         return {}
     },
     methods: {
-        sendArticToCatalog() {
-            this.$emit('sendArticToCatalog', this.product_data.article)
+        addToCart() {
+            this.$emit('addToCart', this.product_data)
         }
     }
 }
@@ -84,6 +84,8 @@ export default {
         text-align: center
         padding: 50px 0 50px 0
         button
+            cursor: pointer
+            border-radius: 10px
             width: 200px
             height: 50px
             background: #FFFFFF
