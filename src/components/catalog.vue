@@ -1,5 +1,8 @@
 <template>
+
+    
   <div class="catalog">
+
     <catalogItem
     v-for="product of PRODUCTS"
      :key="product.article"
@@ -26,10 +29,11 @@ export default {
     },
     methods: {
 
-        ...mapActions(['GET_PRODUCTS_FROM_API', 'ADD_TO_CART']),
+        ...mapActions(['GET_PRODUCTS_FROM_API', 'ADD_TO_CART', 'SET_STOIMOST']),
 
         addToCart(data) {
-            this.ADD_TO_CART(data)
+            this.ADD_TO_CART(data);
+            this.SET_STOIMOST(data)
         }
     },
 
@@ -49,6 +53,9 @@ export default {
     display: flex
     justify-content: center
     flex-wrap: wrap
+    img
+        width: 70px
+        height: 70px
     
     
 </style>
