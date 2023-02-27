@@ -2,7 +2,7 @@
 
   <div class="cart">
 
-    <div style="margin-right: 100px;">
+    <div style="margin: 0 100px 0 100px;">
       <cartItem
     v-for="(item, index) in CART"
      :key="item.article" 
@@ -13,7 +13,7 @@
     </div>
       
 
-    <div style="margin-left: 100px; padding-top: 100px;">
+    <div style="margin: 0 100px 0 100px; padding-top: 100px;">
 
       
 
@@ -33,10 +33,15 @@
         <button>ОПЛАТИТЬ ТОВАРЫ</button>
       </div>
 
+      <div class="stoimost" v-if="CART.length">
+        <p>Общая стоимость</p>
+        <p style="padding-top: 10px;"> {{ STOIMOST }} </p>
+      </div>
+      
+
     </div>
 
-    <!-- <p> {{ STOIMOST }} </p> ПОПЫТАЛСЯ РЕАЛИЗОВАТЬ ОБЩУЮ СТОИМОСТЬ! ЧУТОК НЕ ПОЛУЧИЛОСЬ! НАПОМИНАЛКА НАДО НЕ ЗАБЫТЬ СПРОСИТЬ У ПРЕПОДОВАТЕЛЕЙ -->
-
+    
   </div>
 
   <p style="text-align: center; font-family: Raleway; font-size: 35px;" v-if="!CART.length"> Вы не добавили ни одного товара</p>
@@ -66,8 +71,8 @@ export default {
     methods: {
       ...mapActions(['DELETE_FROM_CART', 'SET_STOIMOST', 'DELETE_STOIMOST']),
       deleteFromCart(index) {
-        this.DELETE_FROM_CART(index);
         this.DELETE_STOIMOST(index)
+        this.DELETE_FROM_CART(index);
       },
       // setStoimost(data) {
       //   this.SET_STOIMOST(data)
@@ -115,6 +120,28 @@ export default {
     &:hover
       background: #00B2A0
       color: #FFFFFF
+
+.stoimost
+  border: 2px #00B2A0 solid
+  border-radius: 10px
+  border-left: none
+  border-right: none
+  margin-top: 20px
+  padding-top: 20px
+  padding-bottom: 20px
+  display: flex
+  justify-content: center
+  flex-direction: column
+  font-family: 'Roboto Condensed'
+  font-style: normal
+  font-weight: 400
+  font-size: 24px
+  line-height: 18px
+  text-align: center
+  letter-spacing: 0.6px
+  color: #242121
+  p
+    margin: 0
 
 .form
   width: 569px
